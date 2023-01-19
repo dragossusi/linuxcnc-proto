@@ -44,34 +44,34 @@ message SetTaskModeRequest { status.TaskMode task_mode = 1; }
 message SetTaskStateRequest { status.TaskState task_state = 1; }
 message TaskAbortRequest {}
 
-message HomeAxisRequest { int32 jointNumber = 1; }
-message UnhomeAxisRequest { int32 jointNumber = 1; }
+message HomeAxisRequest { int32 joint_number = 1; }
+message UnhomeAxisRequest { int32 joint_number = 1; }
 
-message OverrideLimitsRequest { int32 jointNumber = 1; }
+message OverrideLimitsRequest { int32 joint_number = 1; }
 
 message JogContinuousRequest {
-  status.JogMode jogMode = 1;
-  bool jointOrAxis = 2;
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
   double velocity = 3;
 }
 
 message JogIncrementalRequest {
-  status.JogMode jogMode = 1;
-  bool jointOrAxis = 2;
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
   double velocity = 3;
   double stepSize = 4;
 }
 
 message JogAbsoluteRequest {
-  status.JogMode jogMode = 1;
-  bool jointOrAxis = 2;
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
   double velocity = 3;
   double position = 4;
 }
 
 message JogStopRequest {
-  status.JogMode jogMode = 1;
-  bool jointOrAxis = 2;
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
 }
 
 // command responses
@@ -81,9 +81,9 @@ message SendCommandResponse { int32 result = 1; }
 message ReadStatusRequest {}
 
 message CncStatus {
-  status.TaskStatus taskStatus = 1;
-  status.MotionStatus motionStatus = 2;
-  status.IoStatus ioStatus = 3;
+  status.TaskStatus task_status = 1;
+  status.MotionStatus motion_status = 2;
+  status.IoStatus io_status = 3;
 }
 
 message GetComponentsRequest {
@@ -93,7 +93,7 @@ message GetComponentsRequest {
 message CreateComponentRequest { string name = 1; }
 
 message CreatePinRequest {
-  string componentId = 1;
+  string component_id = 1;
   string name = 2;
   HalPinType type = 3;
   float value = 4;
