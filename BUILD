@@ -16,6 +16,7 @@ proto_library(
         "//proto/hal:component_proto",
         "//proto/hal:pin_proto",
         "//proto/status/io:io_proto",
+        "//proto/status/message:message_proto",
         "//proto/status/motion:motion_proto",
         "//proto/status/task:task_proto",
     ],

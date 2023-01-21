@@ -7,13 +7,18 @@ import "proto/hal/component.proto";
 import "proto/status/task/task.proto";
 import "proto/status/io/io.proto";
 import "proto/status/jog/jog.proto";
+import "proto/status/message/message.proto";
 import "proto/status/motion/motion.proto";
 
 option java_package = "ro.dragossusi.proto.linuxcnc";
 option java_multiple_files = true;
 
 service LinuxCnc {
+  // status
   rpc ReadStatus(ReadStatusRequest) returns (CncStatus);
+
+  // error
+  rpc ReadError(ReadErrorRequest) returns (SystemMessage);
 
   rpc GetComponents(GetComponentsRequest) returns (GetComponentsResponse);
 
@@ -38,6 +43,9 @@ service LinuxCnc {
   rpc JogAbsolute(JogAbsoluteRequest) returns (SendCommandResponse);
   rpc JogStop(JogStopRequest) returns (SendCommandResponse);
 }
+
+// error
+message ReadErrorRequest{}
 
 // command requests
 message SetTaskModeRequest { status.TaskMode task_mode = 1; }
