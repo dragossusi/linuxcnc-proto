@@ -19,6 +19,7 @@ proto_library(
         "//proto/status/jog:jog_proto",
         "//proto/status/message:message_proto",
         "//proto/status/motion:motion_proto",
+        "//proto/status/motion/mode:mode_proto",
         "//proto/status/task:task_proto",
     ],
 )
