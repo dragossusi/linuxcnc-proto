@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package linuxcnc.status.auto;
+
+option java_package = "ro.dragossusi.proto.linuxcnc.status.auto";
+option java_multiple_files = true;
+
+enum AutoMode {
+  RUN = 0;
+  PAUSE = 1;
+  RESUME = 2;
+  STEP = 3;
+  REVERSE = 4;
+  FORWARD = 5;
+}

@@ -15,6 +15,7 @@ proto_library(
     deps = [
         "//proto/hal:component_proto",
         "//proto/hal:pin_proto",
+        "//proto/status/auto:auto_proto",
         "//proto/status/io:io_proto",
         "//proto/status/jog:jog_proto",
         "//proto/status/message:message_proto",

@@ -10,6 +10,7 @@ import "proto/status/jog/jog.proto";
 import "proto/status/message/message.proto";
 import "proto/status/motion/motion.proto";
 import "proto/status/motion/mode/mode.proto";
+import "proto/status/auto/auto.proto";
 
 option java_package = "ro.dragossusi.proto.linuxcnc";
 option java_multiple_files = true;
@@ -139,8 +140,9 @@ message SendMdiCommandRequest {
   string command = 1;
 }
 
+/** Request message for SetAuto */
 message SetAutoRequest {
-  bool auto_mode = 1;
+  status.auto.AutoMode auto_mode = 1;
   int32 from_line = 2;
 }
 
