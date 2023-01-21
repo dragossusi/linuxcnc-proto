@@ -18,7 +18,7 @@ service LinuxCnc {
   rpc ReadStatus(ReadStatusRequest) returns (CncStatus);
 
   // error
-  rpc ReadError(ReadErrorRequest) returns (SystemMessage);
+  rpc ReadError(ReadErrorRequest) returns (status.SystemMessage);
 
   rpc GetComponents(GetComponentsRequest) returns (GetComponentsResponse);
 
