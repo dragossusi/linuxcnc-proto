@@ -39,7 +39,7 @@ service LinuxCnc {
 
   rpc OverrideLimits(OverrideLimitsRequest) returns (SendCommandResponse);
 
-  rpc SetMotionMode(linuxcnc.status.motion.MotionMode) returns (SendCommandResponse);
+  rpc SetMotionMode(SetMotionModeRequest) returns (SendCommandResponse);
 
   rpc JogContinuous(JogContinuousRequest) returns (SendCommandResponse);
   rpc JogIncremental(JogIncrementalRequest) returns (SendCommandResponse);
@@ -78,6 +78,10 @@ message HomeAxisRequest {int32 joint_number = 1;}
 message UnhomeAxisRequest {int32 joint_number = 1;}
 
 message OverrideLimitsRequest {int32 joint_number = 1;}
+
+message SetMotionModeRequest {
+  linuxcnc.status.motion.MotionMode motion_mode = 1;
+}
 
 message JogContinuousRequest {
   status.JogMode jog_mode = 1;
