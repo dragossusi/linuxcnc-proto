@@ -10,7 +10,7 @@ import "proto/status/jog/jog.proto";
 import "proto/status/message/message.proto";
 import "proto/status/motion/motion.proto";
 import "proto/status/motion/mode/mode.proto";
-import "proto/status/auto/auto.proto";
+import "proto/status/auto/auto_mode.proto";
 
 option java_package = "ro.dragossusi.proto.linuxcnc";
 option java_multiple_files = true;

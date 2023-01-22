@@ -4,18 +4,18 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 package(default_visibility = ["//visibility:public"])
 
 proto_library(
-    name = "motion_proto",
+    name = "motion",
     srcs = ["motion.proto"],
     deps = [
         "//proto/status:position_proto",
-        "//proto/status/axis:axis_proto",
-        "//proto/status/joint:joint_proto",
-        "//proto/status/spindle:spindle_proto",
-        "//proto/status/traj:traj_proto",
+        "//proto/status/axis",
+        "//proto/status/joint",
+        "//proto/status/spindle",
+        "//proto/status/traj",
     ],
 )
 
 cc_proto_library(
     name = "motion_cc_proto",
-    deps = [":motion_proto"],
+    deps = [":motion"],
 )

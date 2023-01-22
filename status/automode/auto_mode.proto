@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package linuxcnc.status.auto;
+package linuxcnc.status.automode;
 
 option java_package = "ro.dragossusi.proto.linuxcnc.status.auto";
 option java_multiple_files = true;

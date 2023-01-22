@@ -4,12 +4,12 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 package(default_visibility = ["//visibility:public"])
 
 proto_library(
-    name = "traj_proto",
+    name = "traj",
     srcs = ["traj.proto"],
     deps = ["//proto/status:position_proto"],
 )
 
 cc_proto_library(
     name = "traj_cc_proto",
-    deps = [":traj_proto"],
+    deps = [":traj"],
 )

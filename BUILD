@@ -15,13 +15,13 @@ proto_library(
     deps = [
         "//proto/hal:component_proto",
         "//proto/hal:pin_proto",
-        "//proto/status/auto:auto_proto",
-        "//proto/status/io:io_proto",
-        "//proto/status/jog:jog_proto",
-        "//proto/status/message:message_proto",
-        "//proto/status/motion:motion_proto",
-        "//proto/status/motion/mode:mode_proto",
-        "//proto/status/task:task_proto",
+        "//proto/status/auto",
+        "//proto/status/io",
+        "//proto/status/jog",
+        "//proto/status/message",
+        "//proto/status/motion",
+        "//proto/status/motion/mode",
+        "//proto/status/task",
     ],
 )
 

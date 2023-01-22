@@ -4,11 +4,11 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 package(default_visibility = ["//visibility:public"])
 
 proto_library(
-    name = "lube_proto",
+    name = "lube",
     srcs = ["lube.proto"],
 )
 
 cc_proto_library(
     name = "lube_cc_proto",
-    deps = [":lube_proto"],
+    deps = [":lube"],
 )
