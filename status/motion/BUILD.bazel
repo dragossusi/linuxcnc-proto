@@ -7,11 +7,11 @@ proto_library(
     name = "motion",
     srcs = ["motion.proto"],
     deps = [
-        "//proto/status:position_proto",
-        "//proto/status/axis",
-        "//proto/status/joint",
-        "//proto/status/spindle",
-        "//proto/status/traj",
+        "//status:position_proto",
+        "//status/axis",
+        "//status/joint",
+        "//status/spindle",
+        "//status/traj",
     ],
 )
 

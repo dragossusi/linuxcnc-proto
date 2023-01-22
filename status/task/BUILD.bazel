@@ -7,8 +7,8 @@ proto_library(
     name = "task",
     srcs = ["task.proto"],
     deps = [
-        "//proto/status:length_unit_proto",
-        "//proto/status:position_proto",
+        "//status:length_unit_proto",
+        "//status:position_proto",
     ],
 )
 

@@ -7,10 +7,10 @@ proto_library(
     name = "io",
     srcs = ["io.proto"],
     deps = [
-        "//proto/status/aux",
-        "//proto/status/coolant",
-        "//proto/status/lube",
-        "//proto/status/tool",
+        "//status/aux",
+        "//status/coolant",
+        "//status/lube",
+        "//status/tool",
     ],
 )
 

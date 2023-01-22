@@ -7,7 +7,7 @@ proto_library(
     name = "spindle",
     srcs = ["spindle.proto"],
     deps = [
-        "//proto/status/spindle/dir",
+        "//status/spindle/dir",
     ],
 )
 

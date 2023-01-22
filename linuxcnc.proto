@@ -2,15 +2,15 @@ syntax = "proto3";
 
 package linuxcnc;
 
-import "proto/hal/pin.proto";
-import "proto/hal/component.proto";
-import "proto/status/task/task.proto";
-import "proto/status/io/io.proto";
-import "proto/status/jog/jog.proto";
-import "proto/status/message/message.proto";
-import "proto/status/motion/motion.proto";
-import "proto/status/motion/mode/mode.proto";
-import "proto/status/auto/auto_mode.proto";
+import "hal/pin.proto";
+import "hal/component.proto";
+import "status/task/task.proto";
+import "status/io/io.proto";
+import "status/jog/jog.proto";
+import "status/message/message.proto";
+import "status/motion/motion.proto";
+import "status/motion/mode/mode.proto";
+import "status/automode/automode.proto";
 
 option java_package = "ro.dragossusi.proto.linuxcnc";
 option java_multiple_files = true;
@@ -142,7 +142,7 @@ message SendMdiCommandRequest {
 
 /** Request message for SetAuto */
 message SetAutoRequest {
-  status.auto.AutoMode auto_mode = 1;
+  status.automode.AutoMode auto_mode = 1;
   int32 from_line = 2;
 }
 

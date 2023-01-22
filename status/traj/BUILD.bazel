@@ -6,7 +6,7 @@ package(default_visibility = ["//visibility:public"])
 proto_library(
     name = "traj",
     srcs = ["traj.proto"],
-    deps = ["//proto/status:position_proto"],
+    deps = ["//status:position_proto"],
 )
 
 cc_proto_library(

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package linuxcnc.status;
 
-import "proto/status/position.proto";
+import "status/position.proto";
 
 option java_package = "ro.dragossusi.proto.linuxcnc.status";
 option java_multiple_files = true;

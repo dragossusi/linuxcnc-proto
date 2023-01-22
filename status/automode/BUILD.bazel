@@ -4,11 +4,11 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 package(default_visibility = ["//visibility:public"])
 
 proto_library(
-    name = "auto_mode",
-    srcs = ["auto_mode.proto"],
+    name = "automode",
+    srcs = ["automode.proto"],
 )
 
 cc_proto_library(
-    name = "auto_cc_proto",
-    deps = [":auto_mode"],
+    name = "autommode_cc_proto",
+    deps = [":automode"],
 )

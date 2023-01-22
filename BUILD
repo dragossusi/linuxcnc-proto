@@ -13,15 +13,15 @@ proto_library(
     name = "linuxcnc_proto",
     srcs = ["linuxcnc.proto"],
     deps = [
-        "//proto/hal:component_proto",
-        "//proto/hal:pin_proto",
-        "//proto/status/auto",
-        "//proto/status/io",
-        "//proto/status/jog",
-        "//proto/status/message",
-        "//proto/status/motion",
-        "//proto/status/motion/mode",
-        "//proto/status/task",
+        "//hal:component_proto",
+        "//hal:pin_proto",
+        "//status/automode",
+        "//status/io",
+        "//status/jog",
+        "//status/message",
+        "//status/motion",
+        "//status/motion/mode",
+        "//status/task",
     ],
 )
 
@@ -62,9 +62,9 @@ cc_grpc_library(
     #    has_services = True,
     deps = [
         ":linuxcnc_cc_proto",
-        "//proto/hal:component_cc_proto",
-        "//proto/hal:pin_cc_proto",
-        "//proto/status/io:io_cc_proto",
-        "//proto/status/task:task_cc_proto",
+        "//hal:component_cc_proto",
+        "//hal:pin_cc_proto",
+        "//status/io:io_cc_proto",
+        "//status/task:task_cc_proto",
     ],
 )
