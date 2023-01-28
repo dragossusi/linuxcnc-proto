@@ -203,7 +203,8 @@ message CreatePinRequest {
   string component_id = 1;
   string name = 2;
   HalPinType type = 3;
-  float value = 4;
+  HalPinDir dir = 4;
+  float value = 5;
 }
 
 message GetComponentsResponse {repeated HalComponent components = 1;}
