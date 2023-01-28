@@ -30,6 +30,8 @@ service LinuxCnc {
 
   rpc CreatePin(CreatePinRequest) returns (HalPin);
 
+  rpc GetPinValue(HalPin) returns (HalPinValue);
+
   // commands
   rpc SetTaskMode(SetTaskModeRequest) returns (SendCommandResponse);
   rpc SetTaskState(SetTaskStateRequest) returns (SendCommandResponse);
