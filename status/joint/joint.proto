@@ -31,7 +31,7 @@ message JointStatus {
 
   double current_input_position = 11;
   double current_velocity = 12;
-  
+
   bool in_position = 13;
 
   bool homing = 14;
@@ -45,6 +45,6 @@ message JointStatus {
 
   bool min_hard_limit_exceeded = 20;
   bool max_hard_limit_exceeded = 21;
-  
+
   bool overriding_limits = 22;
 }
