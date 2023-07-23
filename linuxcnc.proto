@@ -30,6 +30,8 @@ service LinuxCnc {
 
   rpc CreatePin(CreatePinRequest) returns (HalPin);
 
+  rpc GetPinValue(HalPin) returns (HalPinValue);
+
   // commands
   rpc SetTaskMode(SetTaskModeRequest) returns (SendCommandResponse);
   rpc SetTaskState(SetTaskStateRequest) returns (SendCommandResponse);
@@ -203,7 +205,8 @@ message CreatePinRequest {
   string component_id = 1;
   string name = 2;
   HalPinType type = 3;
-  float value = 4;
+  HalPinDir dir = 4;
+  float value = 5;
 }
 
 message GetComponentsResponse {repeated HalComponent components = 1;}

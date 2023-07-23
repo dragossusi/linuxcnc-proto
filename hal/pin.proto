@@ -29,3 +29,11 @@ message HalPin {
   int32 component_id = 4;
   string component_name = 5;
 }
+
+message HalPinValue {
+  oneof value {
+    int32 int_value = 1;
+    float float_value = 2;
+    bool bool_value = 3;
+  }
+}

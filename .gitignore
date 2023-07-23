@@ -1,4 +1,5 @@
-/bazel-bin/
-/bazel-linuxcnc-proto/
-/bazel-out/
-/bazel-testlogs/
+bazel-bin/
+bazel-linuxcnc-proto/
+bazel-out/
+bazel-testlogs/
+.ijwb/

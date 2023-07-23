@@ -6,19 +6,19 @@ option java_package = "ro.dragossusi.proto.linuxcnc.status";
 option java_multiple_files = true;
 
 enum MessageType {
-    NML_Error = 0;
-    NML_Text = 1;
-    NML_Display = 2;
-    
-    Command_Log = 3;
-    
-    Operator_Error = 4;
-    Operator_Text = 5;
-    Operator_Display = 6;
+  NML_Error = 0;
+  NML_Text = 1;
+  NML_Display = 2;
+
+  Command_Log = 3;
+
+  Operator_Error = 4;
+  Operator_Text = 5;
+  Operator_Display = 6;
 }
 
 message SystemMessage {
-    string message = 1;
-    MessageType type = 2;
-    int64 timestamp_millis = 3;
+  string message = 1;
+  MessageType type = 2;
+  int64 timestamp_millis = 3;
 }
