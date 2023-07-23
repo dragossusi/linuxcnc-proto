@@ -1,0 +1,20 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+package(default_visibility = ["//visibility:public"])
+
+#proto
+proto_library(
+    name = "linuxcnc_proto",
+    srcs = ["linuxcnc.proto"],
+    deps = [
+        "//hal:component_proto",
+        "//hal:pin_proto",
+        "//status/automode",
+        "//status/io",
+        "//status/jog",
+        "//status/message",
+        "//status/motion",
+        "//status/motion/mode",
+        "//status/task",
+    ],
+)

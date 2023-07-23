@@ -1,60 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# For use with maven_install's artifacts.
-# maven_install(
-#     ...
-#     artifacts = [
-#         # Your own deps
-#     ] + IO_GRPC_GRPC_KOTLIN_ARTIFACTS + IO_GRPC_GRPC_JAVA_ARTIFACTS,
-# )
-IO_GRPC_GRPC_KOTLIN_ARTIFACTS = [
-    "com.google.guava:guava:31.0.1-android",
-    "com.squareup:kotlinpoet:1.12.0",
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
-    "org.jetbrains.kotlinx:kotlinx-coroutines-debug:1.6.4",
-]
-
-# For use with maven_install's override_targets.
-# maven_install(
-#     ...
-#     override_targets = dict(
-#         IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS.items() +
-#         IO_GRPC_GRPC_KOTLIN_OVERRIDE_TARGETS.items(),
-#         "your.target:artifact": "@//third_party/artifact",
-#     )
-IO_GRPC_GRPC_KOTLIN_OVERRIDE_TARGETS = dict()
-
 GRPC_VERSION = "1.51.1"
-
-# Call this after compat_repositories() to load all dependencies.
-def grpc_kt_repositories():
-    """Imports dependencies for kt_jvm_grpc.bzl"""
-    if not native.existing_rule("io_bazel_rules_kotlin"):
-        io_bazel_rules_kotlin()
-    if not native.existing_rule("com_google_protobuf"):
-        com_google_protobuf()
-    if not native.existing_rule("io_grpc_grpc_java"):
-        io_grpc_grpc_java()
-
-def rules_jvm_external():
-    jvm_external_version = "4.5"
-    jvm_external_sha = "b17d7388feb9bfa7f2fa09031b32707df529f26c91ab9e5d909eb1676badd9a6"
-    http_archive(
-        name = "rules_jvm_external",
-        sha256 = jvm_external_sha,
-        strip_prefix = "rules_jvm_external-4.5",
-        url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % jvm_external_version,
-    )
-
-def io_bazel_rules_kotlin():
-    rules_kotlin_version = "1.7.1"
-    rules_kotlin_sha = "fd92a98bd8a8f0e1cdcb490b93f5acef1f1727ed992571232d33de42395ca9b3"
-    http_archive(
-        name = "io_bazel_rules_kotlin",
-        urls = ["https://github.com/bazelbuild/rules_kotlin/releases/download/v%s/rules_kotlin_release.tgz" % rules_kotlin_version],
-        sha256 = rules_kotlin_sha,
-    )
 
 def com_google_protobuf():
     protobuf_version = "21.12"
@@ -65,23 +11,6 @@ def com_google_protobuf():
         sha256 = protobuf_sha,
         strip_prefix = "protobuf-%s" % protobuf_version,
         urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v%s/protobuf-all-%s.tar.gz" % (protobuf_version, protobuf_version)],
-    )
-
-def com_github_grpc_grpc_kotlin():
-    grpc_kotlin_version = "1.3.0"
-
-    http_archive(
-        name = "com_github_grpc_grpc_kotlin",
-        strip_prefix = "grpc-kotlin-%s" % grpc_kotlin_version,
-        urls = ["https://github.com/grpc/grpc-kotlin/archive/refs/tags/v%s.tar.gz" % (grpc_kotlin_version)],
-    )
-
-def io_grpc_grpc_java():
-    http_archive(
-        name = "io_grpc_grpc_java",
-        sha256 = "75e5994ca18ae3ffaf67a2f08d0274215916b0ff56d62e9e5b447095e622714b",
-        strip_prefix = "grpc-java-%s" % GRPC_VERSION,
-        url = "https://github.com/grpc/grpc-java/archive/v%s.zip" % GRPC_VERSION,
     )
 
 def com_github_grpc_grpc():
