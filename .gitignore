@@ -2,3 +2,4 @@
 /bazel-linuxcnc-proto/
 /bazel-out/
 /bazel-testlogs/
+/.ijwb/
