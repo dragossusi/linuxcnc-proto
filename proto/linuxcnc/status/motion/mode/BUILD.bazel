@@ -1,0 +1,11 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "mode",
+    srcs = ["mode.proto"],
+)
+
+cc_proto_library(
+    name = "mode_cc_proto",
+    deps = [":mode"],
+)

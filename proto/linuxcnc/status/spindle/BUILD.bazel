@@ -1,0 +1,14 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "spindle",
+    srcs = ["spindle.proto"],
+    deps = [
+        "//proto/linuxcnc/status/spindle/dir",
+    ],
+)
+
+cc_proto_library(
+    name = "spindle_cc_proto",
+    deps = [":spindle"],
+)

@@ -1,0 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "io",
+    srcs = ["io.proto"],
+    deps = [
+        "//proto/linuxcnc/status/aux",
+        "//proto/linuxcnc/status/coolant",
+        "//proto/linuxcnc/status/lube",
+        "//proto/linuxcnc/status/tool",
+    ],
+)
+
+cc_proto_library(
+    name = "io_cc_proto",
+    deps = [":io"],
+)

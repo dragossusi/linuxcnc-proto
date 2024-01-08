@@ -1,0 +1,39 @@
+load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
+
+package(default_visibility = ["//visibility:public"])
+
+#proto
+proto_library(
+    name = "linuxcnc_proto",
+    srcs = ["linuxcnc.proto"],
+    deps = [
+        "//proto/linuxcnc/hal:component_proto",
+        "//proto/linuxcnc/hal:pin_proto",
+        "//proto/linuxcnc/status/automode",
+        "//proto/linuxcnc/status/io",
+        "//proto/linuxcnc/status/jog",
+        "//proto/linuxcnc/status/message",
+        "//proto/linuxcnc/status/motion",
+        "//proto/linuxcnc/status/motion/mode",
+        "//proto/linuxcnc/status/task",
+    ],
+)
+
+# cc
+cc_proto_library(
+    name = "linuxcnc_cc_proto",
+    visibility = ["//visibility:public"],
+    deps = [":linuxcnc_proto"],
+)
+
+cc_grpc_library(
+    name = "linuxcnc_grpc",
+    srcs = [":linuxcnc_proto"],
+    grpc_only = True,
+    use_external = True,
+    #    has_services = True,
+    visibility = ["//visibility:public"],
+    deps = [
+        ":linuxcnc_cc_proto",
+    ],
+)

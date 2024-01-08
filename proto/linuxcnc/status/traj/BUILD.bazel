@@ -1,0 +1,12 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "traj",
+    srcs = ["traj.proto"],
+    deps = ["//proto/linuxcnc/status:position_proto"],
+)
+
+cc_proto_library(
+    name = "traj_cc_proto",
+    deps = [":traj"],
+)

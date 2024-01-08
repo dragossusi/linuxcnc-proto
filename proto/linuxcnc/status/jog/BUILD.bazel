@@ -1,0 +1,11 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "jog",
+    srcs = ["jog.proto"],
+)
+
+cc_proto_library(
+    name = "jog_cc_proto",
+    deps = [":jog"],
+)

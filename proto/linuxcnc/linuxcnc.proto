@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+package linuxcnc;
+
+import "proto/linuxcnc/hal/pin.proto";
+import "proto/linuxcnc/hal/component.proto";
+import "proto/linuxcnc/status/task/task.proto";
+import "proto/linuxcnc/status/io/io.proto";
+import "proto/linuxcnc/status/jog/jog.proto";
+import "proto/linuxcnc/status/message/message.proto";
+import "proto/linuxcnc/status/motion/motion.proto";
+import "proto/linuxcnc/status/motion/mode/mode.proto";
+import "proto/linuxcnc/status/automode/automode.proto";
+
+option java_package = "ro.dragossusi.proto.linuxcnc";
+option java_multiple_files = true;
+
+service LinuxCnc {
+  // status
+  rpc ReadStatus(ReadStatusRequest) returns (CncStatus);
+
+  // error
+  rpc ReadError(ReadErrorRequest) returns (status.SystemMessage);
+
+  rpc GetComponents(GetComponentsRequest) returns (GetComponentsResponse);
+
+  rpc CreateComponent(CreateComponentRequest) returns (HalComponent);
+
+  rpc GetPins(HalComponent) returns (GetPinsResponse);
+
+  rpc CreatePin(CreatePinRequest) returns (HalPin);
+
+  // commands
+  rpc SetTaskMode(SetTaskModeRequest) returns (SendCommandResponse);
+  rpc SetTaskState(SetTaskStateRequest) returns (SendCommandResponse);
+  rpc TaskAbort(TaskAbortRequest) returns (SendCommandResponse);
+
+  rpc HomeAxis(HomeAxisRequest) returns (SendCommandResponse);
+  rpc UnhomeAxis(UnhomeAxisRequest) returns (SendCommandResponse);
+
+  rpc OverrideLimits(OverrideLimitsRequest) returns (SendCommandResponse);
+
+  rpc SetMotionMode(SetMotionModeRequest) returns (SendCommandResponse);
+
+  rpc JogContinuous(JogContinuousRequest) returns (SendCommandResponse);
+  rpc JogIncremental(JogIncrementalRequest) returns (SendCommandResponse);
+  rpc JogAbsolute(JogAbsoluteRequest) returns (SendCommandResponse);
+  rpc JogStop(JogStopRequest) returns (SendCommandResponse);
+
+  // limits
+  rpc SetMinPositionLimit(SetMinPositionPositionLimitRequest) returns (SendCommandResponse);
+  rpc SetMaxPositionLimit(SetMaxPositionPositionLimitRequest) returns (SendCommandResponse);
+  rpc SetBacklash(SetBacklashRequest) returns (SendCommandResponse);
+
+  rpc SetFeedHold(SetFeedHoldRequest) returns (SendCommandResponse);
+  rpc LoadTaskPlan(LoadTaskPlanRequest) returns (SendCommandResponse);
+  rpc LoadToolTable(LoadToolTableRequest) returns (SendCommandResponse);
+  rpc SendMdiCommand(SendMdiCommandRequest) returns (SendCommandResponse);
+  rpc SetAuto(SetAutoRequest) returns (SendCommandResponse);
+  rpc SetBlockDelete(SetBlockDeleteRequest) returns (SendCommandResponse);
+  rpc SetFeedOverride(SetFeedOverrideRequest) returns (SendCommandResponse);
+  rpc SetFlood(SetFloodRequest) returns (SendCommandResponse);
+  rpc SetMist(SetMistRequest) returns (SendCommandResponse);
+  rpc SetOptionalStop(SetOptionalStopRequest) returns (SendCommandResponse);
+  rpc SetRapidOverride(SetRapidOverrideRequest) returns (SendCommandResponse);
+  rpc SetSpindle(SetSpindleRequest) returns (SendCommandResponse);
+  rpc SetSpindleOverride(SetSpindleOverrideRequest) returns (SendCommandResponse);
+}
+
+// error
+message ReadErrorRequest{}
+
+// command requests
+message SetTaskModeRequest {status.TaskMode task_mode = 1;}
+message SetTaskStateRequest {status.TaskState task_state = 1;}
+message TaskAbortRequest {}
+
+message HomeAxisRequest {int32 joint_number = 1;}
+message UnhomeAxisRequest {int32 joint_number = 1;}
+
+message OverrideLimitsRequest {int32 joint_number = 1;}
+
+message SetMotionModeRequest {
+  linuxcnc.status.motion.MotionMode motion_mode = 1;
+}
+
+message JogContinuousRequest {
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
+  double velocity = 3;
+}
+
+message JogIncrementalRequest {
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
+  double velocity = 3;
+  double stepSize = 4;
+}
+
+message JogAbsoluteRequest {
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
+  double velocity = 3;
+  double position = 4;
+}
+
+message JogStopRequest {
+  status.JogMode jog_mode = 1;
+  int32 joint_or_axis = 2;
+}
+
+message SetMinPositionPositionLimitRequest {
+  int32 joint_num = 1;
+  double limit = 2;
+}
+
+message SetMaxPositionPositionLimitRequest {
+  int32 joint_num = 1;
+  double limit = 2;
+}
+
+message SetBacklashRequest {
+  int32 joint_num = 1;
+  double backlash = 2;
+}
+
+message SetFeedHoldRequest {
+  int32 mode = 1;
+}
+
+message LoadTaskPlanRequest {
+  optional string file_name = 1;
+}
+
+message LoadToolTableRequest {
+  optional string file_name = 1;
+}
+
+message SendMdiCommandRequest {
+  string command = 1;
+}
+
+/** Request message for SetAuto */
+message SetAutoRequest {
+  status.automode.AutoMode auto_mode = 1;
+  int32 from_line = 2;
+}
+
+message SetBlockDeleteRequest {
+  bool enabled = 1;
+}
+
+message SetFeedOverrideRequest {
+  double rate = 1;
+}
+
+message SetFloodRequest {
+  bool enabled = 1;
+}
+
+message SetMistRequest {
+  bool enabled = 1;
+}
+
+message SetOptionalStopRequest {
+  bool stop = 1;
+}
+
+message SetRapidOverrideRequest {
+  double rate = 1;
+}
+
+message SetSpindleRequest {
+  bool  enabled = 1;
+  int32  speed = 2;
+  int32 direction = 3;
+}
+
+message SetSpindleOverrideRequest {
+  double rate = 1;
+}
+
+
+// command responses
+message SendCommandResponse {int32 result = 1;}
+
+// others
+message ReadStatusRequest {}
+
+message CncStatus {
+  status.TaskStatus task_status = 1;
+  status.MotionStatus motion_status = 2;
+  status.IoStatus io_status = 3;
+}
+
+message GetComponentsRequest {
+  // empty
+}
+
+message CreateComponentRequest {string name = 1;}
+
+message CreatePinRequest {
+  string component_id = 1;
+  string name = 2;
+  HalPinType type = 3;
+  float value = 4;
+}
+
+message GetComponentsResponse {repeated HalComponent components = 1;}
+
+message GetPinsResponse {repeated HalPin pins = 1;}

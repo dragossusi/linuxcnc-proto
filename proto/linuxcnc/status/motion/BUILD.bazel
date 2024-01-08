@@ -1,0 +1,18 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "motion",
+    srcs = ["motion.proto"],
+    deps = [
+        "//proto/linuxcnc/status:position_proto",
+        "//proto/linuxcnc/status/axis",
+        "//proto/linuxcnc/status/joint",
+        "//proto/linuxcnc/status/spindle",
+        "//proto/linuxcnc/status/traj",
+    ],
+)
+
+cc_proto_library(
+    name = "motion_cc_proto",
+    deps = [":motion"],
+)

@@ -1,0 +1,11 @@
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "tool",
+    srcs = ["tool.proto"],
+)
+
+cc_proto_library(
+    name = "tool_cc_proto",
+    deps = [":tool"],
+)
