@@ -1,2 +1,0 @@
-import .bazelproject
-try_import .bazelproject
