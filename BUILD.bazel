@@ -11,6 +11,6 @@ alias(
 )
 
 alias(
-    name = "linuxcnc_grpc",
+    name = "linuxcnc_cc_grpc",
     actual = "//proto/linuxcnc:linuxcnc_grpc",
 )
