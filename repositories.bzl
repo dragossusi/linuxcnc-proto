@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def com_github_grpc_grpc():
-    GRPC_VERSION = "1.65.5"
+    GRPC_VERSION = "1.66.0"
     http_archive(
         name = "com_github_grpc_grpc",
         #        sha256 = "09640607a340ff0d97407ed22fe4adb177e5bb85329821122084359cd57c3dea",
