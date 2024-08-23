@@ -8,7 +8,7 @@ build --action_env=BAZEL_CXXOPTS="-std=c++17"
 build --repo_env=CC=clang
 
 # enable modules
-common --enable_bzlmod
+# common --enable_bzlmod
 
 # enable proto toolchain
 # common --incompatible_enable_proto_toolchain_resolution
