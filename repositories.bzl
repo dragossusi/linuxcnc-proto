@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 def com_google_protobuf():
-    PROTO_VERSION = "27.3"
+    PROTO_VERSION = "28.1"
     if "com_google_protobuf" not in native.existing_rules():
         http_archive(
             name = "com_google_protobuf",
@@ -10,7 +10,7 @@ def com_google_protobuf():
         )
 
 def com_github_grpc_grpc():
-    GRPC_VERSION = "1.66.0"
+    GRPC_VERSION = "1.66.1"
     if "com_github_grpc_grpc" not in native.existing_rules():
         http_archive(
             name = "com_github_grpc_grpc",

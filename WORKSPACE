@@ -6,10 +6,10 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load(
     "//:repositories.bzl",
     "com_github_grpc_grpc",
-    #    "com_google_protobuf",
+    "com_google_protobuf",
 )
 
-#com_google_protobuf()
+com_google_protobuf()
 
 com_github_grpc_grpc()
 
