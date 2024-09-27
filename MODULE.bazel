@@ -1,2 +1,6 @@
 #bazel_dep(name = "toolchains_protoc", version = "0.3.1")
-#bazel_dep(name = "protobuf", version = "28.2")
+bazel_dep(name = "protobuf", version = "28.2")
+#bazel_dep(name = "grpc", version = "1.66.0")
+
+non_module_dependencies = use_extension("//:extensions.bzl", "non_module_dependencies")
+use_repo(non_module_dependencies, "com_github_grpc_grpc")
