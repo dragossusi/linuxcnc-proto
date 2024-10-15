@@ -10,7 +10,7 @@ def com_google_protobuf():
         )
 
 def com_github_grpc_grpc():
-    GRPC_VERSION = "1.66.1"
+    GRPC_VERSION = "1.67.0"
     if "com_github_grpc_grpc" not in native.existing_rules():
         http_archive(
             name = "com_github_grpc_grpc",
