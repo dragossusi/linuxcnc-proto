@@ -1,10 +1,10 @@
 package(default_visibility = ["//visibility:public"])
 
-alias(
-    name = "linuxcnc_proto",
-    actual = "//proto/linuxcnc:linuxcnc_proto",
-)
-
+# alias(
+#     name = "linuxcnc_proto",
+#     actual = "//proto/linuxcnc:linuxcnc_proto",
+# )
+#
 alias(
     name = "linuxcnc_cc_proto",
     actual = "//proto/linuxcnc:linuxcnc_cc_proto",

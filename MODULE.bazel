@@ -1,2 +1,8 @@
-#bazel_dep(name = "toolchains_protoc", version = "0.3.1")
-#bazel_dep(name = "protobuf", version = "28.2")
+module(
+    name = "linuxcnc_proto",
+    version = "0.0.1"
+)
+
+bazel_dep(name = "protobuf", version = "33.1")
+bazel_dep(name = "grpc", version = "1.76.0")
+bazel_dep(name = "rules_proto", version = "7.1.0")
