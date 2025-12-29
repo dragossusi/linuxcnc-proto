@@ -1,5 +1,6 @@
 load("@protobuf//bazel:cc_proto_library.bzl", "cc_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@grpc_kotlin//:kt_jvm_grpc.bzl", "kt_jvm_proto_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -13,5 +14,10 @@ proto_library(
 
 cc_proto_library(
     name = "spindle_cc_proto",
+    deps = [":spindle"],
+)
+
+kt_jvm_proto_library(
+    name = "spindle_kt_proto",
     deps = [":spindle"],
 )
