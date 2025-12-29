@@ -4,5 +4,24 @@ module(
 )
 
 bazel_dep(name = "protobuf", version = "33.1")
-bazel_dep(name = "grpc", version = "1.76.0")
 bazel_dep(name = "rules_proto", version = "7.1.0")
+bazel_dep(name = "rules_kotlin", version = "2.2.0")
+bazel_dep(name = "rules_jvm_external", version = "6.9")
+bazel_dep(name = "grpc_kotlin", version = "1.5.0")
+bazel_dep(name = "grpc", version = "1.76.0")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    # Rerun whenever adding new artifacts.
+    # $ REPIN=1 bazelisk run @maven//:pin
+    artifacts = [
+        "com.google.truth:truth:1.4.4",
+        "junit:junit:4.13.2",
+        "com.google.truth.extensions:truth-proto-extension:1.4.4",
+        "io.grpc:grpc-testing:1.75.0",
+    ],
+    fetch_sources = False,
+    generate_compat_repositories = True,
+    strict_visibility = True,
+)
+use_repo(maven, "grpc_kotlin_maven", "maven")

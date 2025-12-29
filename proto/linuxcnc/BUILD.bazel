@@ -2,6 +2,7 @@ load("@grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 load("@grpc//bazel:grpc_build_system.bzl", "grpc_proto_library")
 load("@protobuf//bazel:cc_proto_library.bzl", "cc_proto_library")
 load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@grpc_kotlin//:kt_jvm_grpc.bzl", "kt_jvm_grpc_library", "kt_jvm_proto_library")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -39,10 +40,16 @@ cc_grpc_library(
     ],
 )
 
-# grpc_proto_library(
-#     name = "linuxcnc",
-#     srcs = [":linuxcnc_proto"],
-#     deps = [
-#         ":linuxcnc_cc_proto",
-#     ],
-# )
+# kt
+kt_jvm_proto_library(
+    name = "linuxcnc_kt_proto",
+    visibility = ["//visibility:public"],
+    deps = [":linuxcnc_proto"],
+)
+
+kt_jvm_grpc_library(
+    name = "linuxcnc_kt_grpc",
+    srcs = [":linuxcnc_proto"],
+    visibility = ["//visibility:public"],
+    deps = [":linuxcnc_kt_proto"],
+)
